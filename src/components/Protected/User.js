@@ -19,12 +19,13 @@ class User extends Component {
     getUser = () => {
         if (localStorage.token) {
             fetch('http://localhost:3000/users/profile', {
+                method: "POST",
                 headers: {
                     'Authorization': `Bearer ${localStorage.token}`
                 }
             })
                 .then(resp => resp.json())
-                .then(data => this.setState({ username: data.username, userID: data.id }))
+                .then(data => this.setState({ username: data.username, userID: data.user_id }))
         }
     }
 
